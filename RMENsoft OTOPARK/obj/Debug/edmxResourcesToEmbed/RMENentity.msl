@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RMENDatabaseModelStoreContainer" CdmEntityContainer="RMENDatabaseEntities">
+    <EntitySetMapping Name="Aracs">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.Arac">
+        <MappingFragment StoreEntitySet="Arac">
+          <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="m_id" ColumnName="m_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bos">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.bo">
+        <MappingFragment StoreEntitySet="bos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="bosyerler" ColumnName="bosyerler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dolus">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.dolu">
+        <MappingFragment StoreEntitySet="dolu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="doluyerler" ColumnName="doluyerler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giris">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.giri">
+        <MappingFragment StoreEntitySet="giris">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="kullanici" ColumnName="kullanici" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="eposta" ColumnName="eposta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Konums">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.Konum">
+        <MappingFragment StoreEntitySet="Konum">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="a_plaka" ColumnName="a_plaka" />
+          <ScalarProperty Name="konum1" ColumnName="konum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logKayits">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.logKayit">
+        <MappingFragment StoreEntitySet="logKayit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarihs">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.Tarih">
+        <MappingFragment StoreEntitySet="Tarih">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="a_plaka" ColumnName="a_plaka" />
+          <ScalarProperty Name="GirisSaati" ColumnName="GirisSaati" />
+          <ScalarProperty Name="CikisSaati" ColumnName="CikisSaati" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veriDepoes">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.veriDepo">
+        <MappingFragment StoreEntitySet="veriDepo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Adı" ColumnName="Adı" />
+          <ScalarProperty Name="Soyadı" ColumnName="Soyadı" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="Konum" ColumnName="Konum" />
+          <ScalarProperty Name="Giris" ColumnName="Giris" />
+          <ScalarProperty Name="Cikis" ColumnName="Cikis" />
+          <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteris">
+      <EntityTypeMapping TypeName="RMENDatabaseModel.Musteri">
+        <MappingFragment StoreEntitySet="Musteri">
+          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Soyadı" ColumnName="Soyadı" />
+          <ScalarProperty Name="Adı" ColumnName="Adı" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

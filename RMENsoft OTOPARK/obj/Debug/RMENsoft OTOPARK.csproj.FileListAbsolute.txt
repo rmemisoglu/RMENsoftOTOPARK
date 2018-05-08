@@ -1,0 +1,23 @@
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\RMENsoft OTOPARK.exe.config
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\RMENsoft OTOPARK.exe
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\RMENsoft OTOPARK.pdb
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft OTOPARK.csprojResolveAssemblyReference.cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.Properties.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft OTOPARK.csproj.GenerateResource.Cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft OTOPARK.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft OTOPARK.exe
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft OTOPARK.pdb
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\RMENDatabase.mdf
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\RMENDatabase_log.ldf
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\EntityFramework.dll
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\EntityFramework.xml
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.ForgotPassword.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.DeleteAcc.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.Login.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.Sign.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.Location.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.vehicleEntry.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.vehicleExit.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\RMENsoft OTOPARK\RMENsoft OTOPARK\obj\Debug\RMENsoft_OTOPARK.SignVerify.resources
