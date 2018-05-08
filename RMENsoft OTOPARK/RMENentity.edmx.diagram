@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1e41bf008df4aeaa0fe451b49a09f3d" Name="Diagram1">
+        <EntityTypeShape EntityType="RMENDatabaseModel.Arac" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.bo" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.dolu" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.giri" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.Konum" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.logKayit" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.Tarih" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.veriDepo" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RMENDatabaseModel.FK_Konum_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="RMENDatabaseModel.FK_Tarih_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RMENDatabaseModel.Musteri" Width="1.5" PointX="0.75" PointY="2.25" />
+        <AssociationConnector Association="RMENDatabaseModel.FK_Musteri_ToTable" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RMENDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="Plaka" />
+          </Key>
+          <Property Name="Plaka" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+          <Property Name="m_id" Type="int" />
+        </EntityType>
+        <EntityType Name="bos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bosyerler" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dolu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doluyerler" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="giris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="eposta" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Konum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="konum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="logKayit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogoutTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Success" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adı" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadı" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aktif" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarih">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="GirisSaati" Type="nvarchar" MaxLength="50" />
+          <Property Name="CikisSaati" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="veriDepo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adı" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadı" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+          <Property Name="Konum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Giris" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cikis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ucret" Type="float" />
+        </EntityType>
+        <Association Name="FK_Konum_ToTable">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Konum" Type="Self.Konum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Plaka" />
+            </Principal>
+            <Dependent Role="Konum">
+              <PropertyRef Name="a_plaka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_ToTable">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Arac" Type="Self.Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="m_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarih_ToTable">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tarih" Type="Self.Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Plaka" />
+            </Principal>
+            <Dependent Role="Tarih">
+              <PropertyRef Name="a_plaka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RMENDatabaseModelStoreContainer">
+          <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bos" EntityType="Self.bos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dolu" EntityType="Self.dolu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="giris" EntityType="Self.giris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konum" EntityType="Self.Konum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="logKayit" EntityType="Self.logKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="veriDepo" EntityType="Self.veriDepo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Konum_ToTable" Association="Self.FK_Konum_ToTable">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Konum" EntitySet="Konum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_ToTable" Association="Self.FK_Musteri_ToTable">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarih_ToTable" Association="Self.FK_Tarih_ToTable">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Tarih" EntitySet="Tarih" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RMENDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="Plaka" />
+          </Key>
+          <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_id" Type="Int32" />
+          <NavigationProperty Name="Konums" Relationship="Self.FK_Konum_ToTable" FromRole="Arac" ToRole="Konum" />
+          <NavigationProperty Name="Tarihs" Relationship="Self.FK_Tarih_ToTable" FromRole="Arac" ToRole="Tarih" />
+          <NavigationProperty Name="Musteri" Relationship="RMENDatabaseModel.FK_Musteri_ToTable" FromRole="Arac" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="bo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bosyerler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dolu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doluyerler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="giri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Konum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="konum1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Konum_ToTable" FromRole="Konum" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="logKayit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogoutTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Success" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tarih">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GirisSaati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CikisSaati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Tarih_ToTable" FromRole="Tarih" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="veriDepo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Konum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Giris" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cikis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ucret" Type="Double" />
+        </EntityType>
+        <Association Name="FK_Konum_ToTable">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Konum" Type="Self.Konum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Plaka" />
+            </Principal>
+            <Dependent Role="Konum">
+              <PropertyRef Name="a_plaka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarih_ToTable">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tarih" Type="Self.Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Plaka" />
+            </Principal>
+            <Dependent Role="Tarih">
+              <PropertyRef Name="a_plaka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RMENDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aracs" EntityType="Self.Arac" />
+          <EntitySet Name="bos" EntityType="Self.bo" />
+          <EntitySet Name="dolus" EntityType="Self.dolu" />
+          <EntitySet Name="giris" EntityType="Self.giri" />
+          <EntitySet Name="Konums" EntityType="Self.Konum" />
+          <EntitySet Name="logKayits" EntityType="Self.logKayit" />
+          <EntitySet Name="Tarihs" EntityType="Self.Tarih" />
+          <EntitySet Name="veriDepoes" EntityType="Self.veriDepo" />
+          <AssociationSet Name="FK_Konum_ToTable" Association="Self.FK_Konum_ToTable">
+            <End Role="Arac" EntitySet="Aracs" />
+            <End Role="Konum" EntitySet="Konums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarih_ToTable" Association="Self.FK_Tarih_ToTable">
+            <End Role="Arac" EntitySet="Aracs" />
+            <End Role="Tarih" EntitySet="Tarihs" />
+          </AssociationSet>
+          <EntitySet Name="Musteris" EntityType="RMENDatabaseModel.Musteri" />
+          <AssociationSet Name="FK_Musteri_ToTable" Association="RMENDatabaseModel.FK_Musteri_ToTable">
+            <End Role="Musteri" EntitySet="Musteris" />
+            <End Role="Arac" EntitySet="Aracs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aracs" Relationship="RMENDatabaseModel.FK_Musteri_ToTable" FromRole="Musteri" ToRole="Arac" />
+          <Property Name="Aktif" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Musteri_ToTable">
+          <End Type="RMENDatabaseModel.Musteri" Role="Musteri" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RMENDatabaseModel.Arac" Role="Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="m_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RMENDatabaseModelStoreContainer" CdmEntityContainer="RMENDatabaseEntities">
+          <EntitySetMapping Name="Aracs">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.Arac">
+              <MappingFragment StoreEntitySet="Arac">
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="m_id" ColumnName="m_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bos">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.bo">
+              <MappingFragment StoreEntitySet="bos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bosyerler" ColumnName="bosyerler" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dolus">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.dolu">
+              <MappingFragment StoreEntitySet="dolu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="doluyerler" ColumnName="doluyerler" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="giris">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.giri">
+              <MappingFragment StoreEntitySet="giris">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kullanici" ColumnName="kullanici" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konums">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.Konum">
+              <MappingFragment StoreEntitySet="Konum">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="a_plaka" ColumnName="a_plaka" />
+                <ScalarProperty Name="konum1" ColumnName="konum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logKayits">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.logKayit">
+              <MappingFragment StoreEntitySet="logKayit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="Success" ColumnName="Success" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarihs">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.Tarih">
+              <MappingFragment StoreEntitySet="Tarih">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="a_plaka" ColumnName="a_plaka" />
+                <ScalarProperty Name="GirisSaati" ColumnName="GirisSaati" />
+                <ScalarProperty Name="CikisSaati" ColumnName="CikisSaati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="veriDepoes">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.veriDepo">
+              <MappingFragment StoreEntitySet="veriDepo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="Adı" ColumnName="Adı" />
+                <ScalarProperty Name="Soyadı" ColumnName="Soyadı" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="Konum" ColumnName="Konum" />
+                <ScalarProperty Name="Giris" ColumnName="Giris" />
+                <ScalarProperty Name="Cikis" ColumnName="Cikis" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteris">
+            <EntityTypeMapping TypeName="RMENDatabaseModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Soyadı" ColumnName="Soyadı" />
+                <ScalarProperty Name="Adı" ColumnName="Adı" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
