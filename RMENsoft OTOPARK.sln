@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMENsoft OTOPARK", "RMENsoft OTOPARK\RMENsoft OTOPARK.csproj", "{C30BEBE5-8B09-40F1-80E0-30197D7076DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C30BEBE5-8B09-40F1-80E0-30197D7076DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30BEBE5-8B09-40F1-80E0-30197D7076DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30BEBE5-8B09-40F1-80E0-30197D7076DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30BEBE5-8B09-40F1-80E0-30197D7076DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DA3C3D2-3992-48DB-93B7-26B499437FE1}
+	EndGlobalSection
+EndGlobal
