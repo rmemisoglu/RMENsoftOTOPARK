@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -531,39 +531,91 @@ namespace RMENsoft_OTOPARK
         {
             if (textBox1.Text != "" && textBox5.Text != "" && comboBox1.Text != "")
             {
-                //MUSTERI
+                var tcList = (from x in rm.Musteris where x.TC == textBox1.Text select x.TC).ToList();
                 RMENdata.MusteriRow musteriRow = rmendata1.Musteri.NewMusteriRow();
-                musteriRow.TC = textBox1.Text;
-                musteriRow.Adı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox2.Text);
-                musteriRow.Soyadı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox3.Text);
-                musteriRow.Telefon = textBox4.Text;
-                musteriRow.Aktif = 1;
-                rmendata1.Musteri.AddMusteriRow(musteriRow);
-                musteriTableAdapter.Update(musteriRow);
+                //MUSTERI
+                if (tcList!=null)
+                {
+                    Musteri m = (from x in rm.Musteris where x.TC == textBox1.Text select x).FirstOrDefault();
+                    m.Aktif = 1;
+                    rm.SaveChanges();
+                }
+                else
+                {
+                    
+                    musteriRow.TC = textBox1.Text;
+                    musteriRow.Adı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox2.Text);
+                    musteriRow.Soyadı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox3.Text);
+                    musteriRow.Telefon = textBox4.Text;
+                    musteriRow.Aktif = 1;
+                    rmendata1.Musteri.AddMusteriRow(musteriRow);
+                    musteriTableAdapter.Update(musteriRow);
+                }
+
 
                 //ARAC
-                RMENdata.AracRow aracRow = rmendata1.Arac.NewAracRow();
-                aracRow.Plaka = textBox5.Text.ToUpper();
-                aracRow.Marka = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox6.Text);
-                aracRow.Model = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox7.Text);
-                aracRow.Renk = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox8.Text);
-                aracRow.m_id = musteriRow.Id;
-                rmendata1.Arac.AddAracRow(aracRow);
-                aracTableAdapter.Update(aracRow);
+                var plakaList = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).ToList();
+
+                if (plakaList!=null)
+                {
+                    RMENdata.AracRow aracRow = rmendata1.Arac.FindByPlaka(textBox5.Text);
+                    aracRow.Plaka = textBox5.Text.ToUpper();
+                    aracRow.Marka = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox6.Text);
+                    aracRow.Model = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox7.Text);
+                    aracRow.Renk = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox8.Text);
+                    aracRow.m_id = (from x in rm.Musteris where x.TC == textBox1.Text select x.Id).FirstOrDefault();
+                    aracTableAdapter.Update(aracRow);
+                }
+                else
+                {
+                    RMENdata.AracRow aracRow = rmendata1.Arac.NewAracRow();
+                    aracRow.Plaka = textBox5.Text.ToUpper();
+                    aracRow.Marka = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox6.Text);
+                    aracRow.Model = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox7.Text);
+                    aracRow.Renk = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox8.Text);
+                    aracRow.m_id = musteriRow.Id;
+                    rmendata1.Arac.AddAracRow(aracRow);
+                    aracTableAdapter.Update(aracRow);
+                }
 
                 //TARIH
-                RMENdata.TarihRow tarihRow = rmendata1.Tarih.NewTarihRow();
-                tarihRow.GirisSaati = dateTimePicker1.Value.ToString();
-                tarihRow.a_plaka = aracRow.Plaka;
-                rmendata1.Tarih.AddTarihRow(tarihRow);
-                tarihTableAdapter.Update(tarihRow);
+                var tarihPlaka = (from x in rm.Tarihs where x.a_plaka == textBox5.Text select x.a_plaka).ToList();
+
+                if(tarihPlaka != null)
+                {
+                    Tarih t = (from x in rm.Tarihs where x.a_plaka == textBox5.Text select x).FirstOrDefault();
+                    t.GirisSaati = dateTimePicker1.Value.ToString();
+                    t.a_plaka = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).FirstOrDefault();
+                    rm.SaveChanges();
+                }
+                else
+                {
+                    RMENdata.TarihRow tarihRow = rmendata1.Tarih.NewTarihRow();
+                    tarihRow.GirisSaati = dateTimePicker1.Value.ToString();
+                    tarihRow.a_plaka = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).FirstOrDefault();
+                    rmendata1.Tarih.AddTarihRow(tarihRow);
+                    tarihTableAdapter.Update(tarihRow);
+                }
 
                 //KONUM
-                RMENdata.KonumRow konumRow = rmendata1.Konum.NewKonumRow();
-                konumRow.konum = comboBox1.Text;
-                konumRow.a_plaka = aracRow.Plaka;
-                rmendata1.Konum.AddKonumRow(konumRow);
-                konumTableAdapter.Update(konumRow);
+                var konumPlaka = (from x in rm.Konums where x.a_plaka == textBox5.Text select x.a_plaka).ToList();
+
+                if (konumPlaka != null)
+                {
+                    Konum k = (from x in rm.Konums where x.a_plaka == textBox5.Text select x).FirstOrDefault();
+                    k.konum1 = comboBox1.Text;
+                    k.a_plaka = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).FirstOrDefault();
+                    rm.SaveChanges();
+                }
+                else
+                {
+                    RMENdata.KonumRow konumRow = rmendata1.Konum.NewKonumRow();
+                    konumRow.konum = comboBox1.Text;
+                    konumRow.a_plaka = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).FirstOrDefault();
+                    rmendata1.Konum.AddKonumRow(konumRow);
+                    konumTableAdapter.Update(konumRow);
+                }
+                
                 plakayaz();
 
                
@@ -576,19 +628,9 @@ namespace RMENsoft_OTOPARK
 
 
                 //BOS
-                bag.Open();
-                kmt.Connection = bag;
-                kmt.CommandText = "SELECT ID FROM bos where bosyerler='"+comboBox1.Text+"'";
-                int bosID = Convert.ToInt32(kmt.ExecuteScalar());
-                kmt.CommandText ="delete from bos where ID="+bosID+"";
-                kmt.ExecuteNonQuery();
-                bag.Close();
-
-                //RMENdata.bosRow bosRow = rmendata1.bos.FindByID(bosID);
-                //bosRow.Delete();
-                //bosTableAdapter.Update(bosRow);
-
-
+                bo b = (from x in rm.bos where x.bosyerler == comboBox1.Text select x).FirstOrDefault();
+                rm.bos.Remove(b);
+                rm.SaveChanges();
 
                 comboBox1.Items.Clear();
                 textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear();
@@ -640,3 +682,4 @@ namespace RMENsoft_OTOPARK
         }
     }
 }
+
