@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -531,10 +531,10 @@ namespace RMENsoft_OTOPARK
         {
             if (textBox1.Text != "" && textBox5.Text != "" && comboBox1.Text != "")
             {
-                var tcList = (from x in rm.Musteris where x.TC == textBox1.Text select x.TC).ToList();
+                string tcList = (from x in rm.Musteris where x.TC == textBox1.Text select x.TC).FirstOrDefault();
                 RMENdata.MusteriRow musteriRow = rmendata1.Musteri.NewMusteriRow();
                 //MUSTERI
-                if (tcList!=null)
+                if (tcList != null)
                 {
                     Musteri m = (from x in rm.Musteris where x.TC == textBox1.Text select x).FirstOrDefault();
                     m.Aktif = 1;
@@ -542,7 +542,6 @@ namespace RMENsoft_OTOPARK
                 }
                 else
                 {
-                    
                     musteriRow.TC = textBox1.Text;
                     musteriRow.Adı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox2.Text);
                     musteriRow.Soyadı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBox3.Text);
@@ -553,10 +552,10 @@ namespace RMENsoft_OTOPARK
                 }
 
 
-                //ARAC
-                var plakaList = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).ToList();
+                ////ARAC
+                string plakaList = (from x in rm.Aracs where x.Plaka == textBox5.Text select x.Plaka).FirstOrDefault();
 
-                if (plakaList!=null)
+                if (plakaList != null)
                 {
                     RMENdata.AracRow aracRow = rmendata1.Arac.FindByPlaka(textBox5.Text);
                     aracRow.Plaka = textBox5.Text.ToUpper();
@@ -579,9 +578,9 @@ namespace RMENsoft_OTOPARK
                 }
 
                 //TARIH
-                var tarihPlaka = (from x in rm.Tarihs where x.a_plaka == textBox5.Text select x.a_plaka).ToList();
+                string tarihPlaka = (from x in rm.Tarihs where x.a_plaka == textBox5.Text select x.a_plaka).FirstOrDefault();
 
-                if(tarihPlaka != null)
+                if (tarihPlaka != null)
                 {
                     Tarih t = (from x in rm.Tarihs where x.a_plaka == textBox5.Text select x).FirstOrDefault();
                     t.GirisSaati = dateTimePicker1.Value.ToString();
@@ -598,7 +597,7 @@ namespace RMENsoft_OTOPARK
                 }
 
                 //KONUM
-                var konumPlaka = (from x in rm.Konums where x.a_plaka == textBox5.Text select x.a_plaka).ToList();
+                string konumPlaka = (from x in rm.Konums where x.a_plaka == textBox5.Text select x.a_plaka).FirstOrDefault();
 
                 if (konumPlaka != null)
                 {
@@ -682,4 +681,3 @@ namespace RMENsoft_OTOPARK
         }
     }
 }
-
